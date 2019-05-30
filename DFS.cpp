@@ -1,5 +1,5 @@
 
-/////////connectivity problem ///////////////
+/////////dfs roblem ///////////////
 #include <iostream>
 #include <vector>
 #include <map>
@@ -23,6 +23,7 @@ bool visit[N];
 void dfs(int u)
 {
     visit[u]=1;
+    cout<<u<<" ";
     for(int i:g[u])
     {
         if(visit[i])
@@ -43,20 +44,8 @@ int main()
         g[v].push_back(u);
         g[u].push_back(v);
     }
-    cin>>q;
-    while(q--)
-    {
-        cin>>a>>b;
-        dfs(a);
-        if(visit[b])
-        {
-            cout<<"it will be reached"<<endl;
-        }
-        else
-        {
-            cout<<"oops it didn't"<<endl;
-        }
-    }
+    cin>>a;
+    dfs(a);
     /*for(int i:visit[10])
     {
         cout<<i<<endl;
