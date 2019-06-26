@@ -1,3 +1,7 @@
+
+/* helpful blog 
+http://isolvedaproblem.blogspot.com/2012/02/silly-sort.html
+*/
 #include <iostream>
 #include <vector>
 #include <set>
