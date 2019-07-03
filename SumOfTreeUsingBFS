@@ -1,0 +1,65 @@
+#include<bits/stdc++.h>
+#define ll long long 
+#define mod 1000000007
+using namespace std;
+/*
+7 6
+26 10 3 4 6 1 2
+1 2
+1 3
+2 4 
+2 5
+3 6
+3 7
+*/
+ll a[100001];
+vector<ll>g[100005];
+ll k;
+ll visit[100001];
+ll sum;
+void bfs(ll node)
+{
+    queue<ll>q;
+    q.push(node);
+    visit[node]=1;
+    sum=a[node];
+    while(!q.empty())
+    {
+        ll x=q.front();
+        q.pop();
+        for(auto i:g[x])
+        {
+            if(visit[i]==0)
+            {
+                visit[i]=1;
+                sum+=a[i];
+                q.push(i);
+            }
+        }
+    }
+    cout<<sum<<endl;
+}
+int main()
+{
+    ll n,i,u,v;
+    cin>>n>>k;
+    for(i=1;i<=n;i++)
+    {
+        cin>>a[i];
+        visit[i]=0;
+    }
+    for(i=1;i<=k;i++)
+    {
+        cin>>u>>v;
+        g[u].push_back(v);
+        g[v].push_back(u);
+    }
+    //dfs(1,1);
+    //cout<<cnt<<endl;
+    bfs(1);
+}
+
+
+
+
+
