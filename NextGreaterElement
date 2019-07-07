@@ -1,0 +1,41 @@
+
+int main()
+{
+    ll n,i;
+    cin>>n;
+    ll a[n];
+    for(i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+    stack<ll>s;
+    s.push(a[0]);
+    for(i=1;i<n;i++)
+    {
+        if(a[i]>s.top())
+        {
+            ll temp=s.top();
+            s.pop();
+            cout<<temp<<" "<<a[i]<<endl;
+            //res[i]=temp;
+        }
+        s.push(a[i]);
+    }
+    while(!s.empty())
+    {
+        cout<<s.top()<<" "<<"-1"<<endl;
+        s.pop();
+    }
+}
+
+/*
+input:
+4
+12 58 7 17
+output:
+12 58
+7 17
+17 -1
+58 -1
+
+*/
