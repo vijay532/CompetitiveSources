@@ -1,0 +1,43 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	long long i,j,k,t;
+	cin>>t;
+	string sp;
+	getline(cin,sp);
+	while(t--)
+	{
+	    string s;
+	    getline(cin,s);
+	    istringstream s1(s);
+	    vector<string>v;
+	    string word;
+	    //cout<<s<<endl;
+    	    while(getline(s1,word,' '))
+    	    {
+    	        v.push_back(word);
+    	       // cout<<word<<" "<<t<<endl;
+    	    }
+    	    //cout<<v[0]<<endl;
+    	    stack<string>st;
+    	    for(auto j:v)
+    	    {
+    	        st.push(j);
+    	    }
+    	    while(!st.empty())
+    	    {
+    	        cout<<st.top()<<" ";
+    	        st.pop();
+    	    }
+    	    
+	}
+	return 0;
+}
+
+/*
+1
+my name is khan 
+khan is name my */
+
