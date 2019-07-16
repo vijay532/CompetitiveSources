@@ -1,0 +1,60 @@
+#include<bits/stdc++.h>
+using namespace std;
+/*int se;
+int a[10001];
+int b_search(int start,int end, int se)
+{
+    int mid=(start+end)/2;
+    if(se==a[mid])
+    {
+        return mid;
+    }
+    else if(a[mid]>se)
+    {
+        b_search(start,mid-1,se);
+    }
+    else
+    {
+        b_search(mid+1,end,se);
+    }
+}*/
+int a[100][100];
+//int i,j;
+void print(int i, int j,int n, int m)
+{
+    if(i>=n || j>=m)
+    {
+        return;
+    }
+    for(int p=i;p<m;p++)
+    {
+        cout<<a[i][p]<<" ";
+    }
+    for(int p=j+1;p<n;p++)
+    {
+        cout<<a[p][m-1]<<" ";
+    }
+    for(int p=m-2;p>=j;p--)
+    {
+        cout<<a[n-1][p]<<" ";
+    }
+    for(int p=n-2;p>i;p--)
+    {
+        cout<<a[p][j]<<" ";
+    }
+    print(i+1,j+1,n-1,m-1);
+    
+}
+int main()
+{
+    int m,n,i,j;
+    cin>>n>>m;
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<m;j++)
+        {
+            cin>>a[i][j];
+        }
+    }
+    print(0,0,n,m);
+}
