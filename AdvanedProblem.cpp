@@ -5,7 +5,7 @@
 using namespace std;
 /*
 5 9 8 4
-15 27 24 12= 78
+15 27 24 12
 5 27 8 12 
 */
 int main()
