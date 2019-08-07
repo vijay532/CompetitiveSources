@@ -1,3 +1,4 @@
+#https://www.codechef.com/AUG19B/problems/KS1
 import random 
 
 f=open('output.txt','w');
