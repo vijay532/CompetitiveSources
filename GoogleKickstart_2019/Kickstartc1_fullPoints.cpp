@@ -1,5 +1,5 @@
 //g++  5.4.0
-
+// pairing concept 
 #include <bits/stdc++.h>
 #define ll long long 
 using namespace std;
