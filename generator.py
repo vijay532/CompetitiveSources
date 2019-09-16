@@ -1,19 +1,15 @@
-#https://www.codechef.com/AUG19B/problems/KS1
+#https://www.codechef.com/SEPT19B/problems/GDSUB
 import random 
 
 f=open('output.txt','w');
 
 def test():
-	t=random.randint(1,10)
-	f.write(str(t) + "\n")
-
-	for i in range(t):
-		n=random.randint(2,10)
-		f.write(str(n) + "\n")
-		for j in range(n):
-			m=random.randint(1,10)
-			f.write(str(m) + " ")
-		f.write("\n")
-
+    n=random.randint(1,10)
+    f.write(str(n) + " ")
+    k=random.randint(1,n)
+    f.write(str(k) + "\n")
+    for i in range(n):
+        n=random.randint(2,8000)
+        f.write(str(n) + " ")
 test()
 f.close()
