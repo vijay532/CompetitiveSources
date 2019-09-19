@@ -1,7 +1,6 @@
 /*
 https://www.spoj.com/problems/PPATH/
 */
-
 #include<bits/stdc++.h>
 #define ll long long 
 using namespace std;
