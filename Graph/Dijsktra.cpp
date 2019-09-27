@@ -1,70 +1,57 @@
-#include<bits/stdc++.h>
+//g++  5.4.0
+
+#include <bits/stdc++.h>
 #define ll long long 
-#define INF 0x3f3f3f3f
+#define mod 1000000007
+#define INF mod*mod
 using namespace std;
-//const int N=100;
-vector<pair<ll,ll>>g;
-ll n,m;
-/*
-1
-5 4
-1 2 3
-2 3 8
-3 4 10
-2 4 4
-2
-*/
-void dijkstra(int s)
+vector<pair<ll,ll>>g[100001];
+ll n;
+void dij(ll s)
 {
-    set<pair<ll,ll>>sd;
-    set<pair<ll,ll>>:: iterator it1;
-    vector<ll>dis(n,INF);
-    sd.insert(make_pair(s,0)); //source and weight (2,0)
+    //ll i;
+    vector<ll>dis(100001,INT_MAX);
+    //cout<<INF<<endl;
     dis[s]=0;
-    while(!sd.empty())
+    set<pair<ll,ll>>st;
+    st.insert(make_pair(0,s));
+    while(!st.empty())
     {
-        pair<ll,ll>res=*(sd.begin());
-        sd.erase(sd.begin());
-        int u=res.first;  // getting the node to traverse the graph 
-        list<pair<ll,ll>>:: iterator it;
-        for(it=g[u].begin();it!=g[u].end();it++)
+        pair<ll,ll>tmp=*(st.begin());
+        ll u=tmp.second;
+        st.erase(st.begin());
+        for(auto i:g[u])
         {
-            int v=(*it).first;  // 3  4 
-            int weight=(*it).second;  // 8  4 
-            if(dis[v]>dis[u]+weight)  // INF>0+8   INF>0+
-             {
-                if(dis[v]!=INF)
+            ll v=i.first;
+            ll w=i.second;
+            if(dis[v]>dis[u]+w)
+            {
+                /*if(dis[v]!=INF)
                 {
-                    sd.erase(sd.find(make_pair(v,dis[v])));
-                }
-                dis[v]=dis[u]+weight; //8 
-                sd.insert(make_pair(v,dis[v])); // 3 8
+                    st.erase(st.find(make_pair(dis[v],v)));
+                }*/
+                dis[v]=dis[u]+w;
+                st.insert(make_pair(dis[v],v));
             }
-        }
-        cout<<"distance"<<s<<"from"<<endl;
-        for(it1=sd.begin();it1!=s.end();it1++)
-        {
-            cout<<"vertex"<<it.first<<"is"<<it.second<<endl;
+                
         }
     }
+    for(ll i=1;i<=n;i++)
+    {
+        cout<<dis[i]<<" ";
+    }
+    return ;
 }
 int main()
 {
-    ll t,i,j,k,a,b,w;
-    cin>>t;
-    while(t--)
+    ll t,i,j,m,u,v,w,s;
+    cin>>n>>m;
+    while(m--)
     {
-        cin>>n>>m; // nodes and edges
-        for(i=0;i<m;i++)
-        {
-            cin>>a>>b>>w;
-            g[a].push_back(make_pair(b,w));
-            g[b].push_back(make_pair(a,w));
-        }
-		int s;
-        cin>>s; // source
-        dijkstra(s);
-        
-        
+        cin>>u>>v>>w;
+        g[u].push_back(make_pair(v,w));
+        g[v].push_back(make_pair(u,w));
     }
+    cin>>s;
+    dij(s);
 }
