@@ -55,6 +55,12 @@ int main()
         p=p->next;
         //push(&head,m);
     }
-    print(head);
+    //print(head);
     getRev(head);
 }
+
+/*
+4
+10 11 12 14
+14 12 11 10
+*/
