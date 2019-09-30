@@ -1,3 +1,3 @@
 # Problem Solved Using STL C++
 
-Some of the Advanced Problems From Various Platforms
+Data structures and Algorithms Problems 
