@@ -1,13 +1,11 @@
-//gcc 5.4.0
-
-#include  <stdio.h>
-#include <stdlib.h>
+#include <bits/stdc++.h>
+using namespace std;
 struct node 
 {
     int data;
     struct node *next;
 };
-void getRev(struct node* head)
+void getRev(struct node *head)
 {
     if(head==NULL)
     {
@@ -16,7 +14,7 @@ void getRev(struct node* head)
     getRev(head->next);
     printf("%d ",head->data);
 }
-void print(struct node* head)
+/*void print(struct node *head)
 {
     if(head==NULL)
     {
@@ -24,22 +22,57 @@ void print(struct node* head)
     }
     printf("%d ",head->data);
     print(head->next);
+}*/
+void getStck(struct node *head)
+{
+    stack<node *>st;
+    struct node *ptr=head;
+    while(ptr!=NULL)
+    {
+        st.push(ptr);
+        ptr=ptr->next;
+    }
+    while(!st.empty())
+    {
+        struct node *p=st.top();
+        cout<<p->data<<" ";
+        st.pop();
+    }
 }
-void push(struct node** head_ref, int new_data) 
-{ 
-    struct node* new_node = (struct node*)malloc(sizeof(struct node)); 
-    new_node->data = new_data; 
-    new_node->next = (*head_ref); 
-    (*head_ref) = new_node; 
-    //return ;
-} 
-
+int getNode(struct node *head,int p)
+{
+    struct node *ptr=head;
+    int i=1;
+    while(i<p)
+    {
+        ptr=ptr->next;
+        i++;
+    }
+    return ptr->data;
+}
+void getSimpleLoop(struct node *head)
+{
+    struct node *ptr=head;
+    int cnt=0;
+    while(ptr!=NULL)
+    {
+        cnt++;
+        ptr=ptr->next;
+    }
+    for(int i=cnt;i>0;i--)
+    {
+        int p=getNode(head,i);
+        cout<<p<<" ";
+    }
+}
 int main()
 {
     int n,m;
+    //cout<<"Enter the number of elements :"<<endl;
     scanf("%d",&n);
-    struct node* head = NULL;
-    struct node* p,*q;
+    //cout<<"Enter the elements:"<<endl;
+    struct node *head = NULL;
+    struct node *p,*q;
     p = (struct node*)malloc(sizeof(struct node));
     scanf("%d",&m);
     p->data = m;
@@ -56,11 +89,9 @@ int main()
         //push(&head,m);
     }
     //print(head);
-    getRev(head);
+    getRev(head); //using recursion
+    cout<<endl;
+    getStck(head);   //stack
+    cout<<endl;
+    getSimpleLoop(head); // using loop 
 }
-
-/*
-4
-10 11 12 14
-14 12 11 10
-*/
