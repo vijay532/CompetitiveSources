@@ -1,0 +1,44 @@
+//g++  7.4.0
+#include<bits/stdc++.h>
+#define ll long long 
+using namespace std;
+ll a[101][101];
+ll dp[101][101];
+ll mx(ll x,ll y,ll z)
+{
+    return(x>y?(x>z?x:z):(y>z)?y:z);
+}
+int main()
+{
+    ll t,m,i,n,j;
+    cin>>t;
+    while(t--)
+    {
+        cin>>n>>m;
+        for(i=0;i<n;i++)
+        {
+            for(j=0;j<m;j++)
+            {
+                cin>>a[i][j];
+            }
+        }
+        ll res=INT_MIN;
+        for(i=0;i<m;i++)
+        {   
+            dp[0][i]=a[0][i];
+        }
+        for(i=1;i<n;i++)
+        {   
+            for(j=0;j<m;j++)
+            {   
+                
+                dp[i][j]=a[i][j]+mx(dp[i-1][j],dp[i-1][j-1],dp[i-1][j+1]);
+                res=max(res,dp[i][j]);
+                cout<<dp[i][j]<<" ";
+            }
+            cout<<endl;
+        }
+        cout<<res<<endl;
+        
+    }
+}
