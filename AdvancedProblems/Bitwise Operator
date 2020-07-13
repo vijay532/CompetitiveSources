@@ -1,0 +1,40 @@
+/*
+https://www.geeksforgeeks.org/count-of-pairs-whose-bitwise-and-is-a-power-of-2/
+*/
+
+#include <bits/stdc++.h>
+#define ll long long 
+using namespace std;
+unordered_map<ll,ll>mp;
+void setBits(ll n)
+{
+    ll pos=0,tmp;
+    while(n)
+    {
+        tmp=n%2;
+        if(tmp) mp[pos]++;
+        pos++;
+        n/=2;
+    }
+}
+int main() 
+{
+    ll t,i,n,j,sum,k;
+    cin>>t;
+    while(t--)
+    {
+        cin>>n;
+        sum=0;
+        for(i=0;i<n;i++)
+        {
+            cin>>j;
+            setBits(j);
+        }
+        for(auto i:mp)
+        {
+            //cout<<i.first<<" "<<i.second<<" "; 
+            sum=sum+((i.second*(i.second-1))/2);
+        }
+        cout<<sum<<endl;
+    }
+}
