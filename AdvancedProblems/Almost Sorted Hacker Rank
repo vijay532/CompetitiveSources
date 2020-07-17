@@ -1,0 +1,81 @@
+/*
+https://www.hackerrank.com/challenges/almost-sorted/problem
+*/
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+vector<string> split_string(string);
+
+// Complete the almostSorted function below.
+bool isOrder(vector<int>&arr)
+{
+    int l=arr.size(),i;
+    for(i=0;i<l-1;i++)
+    {
+        if(arr[i]>arr[i+1])
+        {
+            return false;
+        }
+    }
+    return true;
+}
+void almostSorted(vector<int> arr) 
+{
+    int l=arr.size(),i,j;
+    int strt=0,end=l-1;
+    if(isOrder(arr))
+    {
+        cout<<"yes"<<endl;
+    }
+    else
+    {
+        for(i=0;i<l-1;i++)
+        {
+            if(arr[i]>arr[i+1])
+            {
+                strt=i;
+                break;
+            }
+        }
+        for(j=l-1;j>0;j--)
+        {
+            if(arr[j]<arr[j-1])
+            {
+                end=j;
+                break;
+            }
+        }
+        swap(arr[strt],arr[end]);
+        if(isOrder(arr))
+        {
+            cout<<"yes"<<endl;
+            cout<<"swap"<<" "<<strt+1<<" "<<end+1<<endl;
+        }
+        else
+        {
+            //strt++,end--;
+            int strt_tmp=strt,end_tmp=end,flg=0;
+            while(++strt<--end)
+            {
+                swap(arr[strt],arr[end]);
+                if(isOrder(arr))
+                {
+                    flg=1;
+                    break;    
+                }
+            }
+            if(flg) 
+            {
+                cout<<"yes"<<endl;
+                cout<<"reverse "<<strt_tmp+1<<" "<<end_tmp+1<<endl;
+            }
+            else
+            {
+                cout<<"no"<<endl;
+            }
+        }
+    }
+}
+
